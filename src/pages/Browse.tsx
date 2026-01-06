@@ -33,7 +33,7 @@ const sortOptions = [
 export default function Browse() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [selectedYear, setSelectedYear] = useState<string>('');
+  const [selectedYear, setSelectedYear] = useState<string>('all');
   const [selectedAgeRating, setSelectedAgeRating] = useState<string>('all');
   const [sortBy, setSortBy] = useState('popular');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -59,7 +59,7 @@ export default function Browse() {
     }
 
     // Year filter
-    if (selectedYear) {
+    if (selectedYear && selectedYear !== 'all') {
       result = result.filter((anime) => anime.year.toString() === selectedYear);
     }
 
@@ -97,7 +97,7 @@ export default function Browse() {
   const clearFilters = () => {
     setSearchQuery('');
     setSelectedGenres([]);
-    setSelectedYear('');
+    setSelectedYear('all');
     setSelectedAgeRating('all');
     setSortBy('popular');
   };
@@ -105,7 +105,7 @@ export default function Browse() {
   const hasActiveFilters =
     searchQuery ||
     selectedGenres.length > 0 ||
-    selectedYear ||
+    selectedYear !== 'all' ||
     selectedAgeRating !== 'all';
 
   return (
@@ -181,7 +181,7 @@ export default function Browse() {
                   <SelectValue placeholder="Year" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Years</SelectItem>
+                  <SelectItem value="all">All Years</SelectItem>
                   {years.map((year) => (
                     <SelectItem key={year} value={year.toString()}>
                       {year}
