@@ -1,30 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Stream Hub - مكتبة الأنمي</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: white;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
             margin: 0;
+            line-height: 1.6;
         }
         .container {
             max-width: 800px;
             margin: auto;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         h1 {
             color: #00dbde;
-            font-size: 3rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
         }
         .subtitle {
@@ -39,10 +42,27 @@
             border-radius: 10px;
             display: inline-block;
             margin: 20px 0;
+            border: 2px dashed #00dbde;
         }
         .logo {
             font-size: 4rem;
             margin-bottom: 20px;
+        }
+        .checklist {
+            text-align: right;
+            margin: 30px auto;
+            max-width: 500px;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .checklist p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        .checklist p:before {
+            content: "✅ ";
+            margin-left: 10px;
         }
         .footer {
             margin-top: 40px;
@@ -62,9 +82,11 @@
             سنطلق قريبًا!
         </div>
 
-        <p>جاري إعداد مكتبة الفيديوهات وتصميم المشغل...</p>
-        <p>✅ تم ربط المشروع بـ GitHub بنجاح</p>
-        <p>✅ تم نشر الموقع عبر GitHub Pages</p>
+        <div class="checklist">
+            <p>تم ربط المشروع بـ GitHub بنجاح</p>
+            <p>تم نشر الموقع عبر GitHub Pages</p>
+            <p>جاري إعداد مكتبة الفيديوهات وتصميم المشغل</p>
+        </div>
         
         <div class="footer">
             تم التطوير باستخدام Lovable & GitHub Pages<br>
