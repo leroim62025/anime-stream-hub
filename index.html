@@ -1,70 +1,73 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Stream Hub - مكتبة الأنمي</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Anime Stream Hub | مكتبة الأنمي</title>
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-section">
-                <h1><i class="fas fa-play-circle"></i> Anime Stream Hub</h1>
-                <p class="subtitle">مكتبة فيديوهات الأنمي المجانية - قيد التطوير</p>
+
+<div class="container">
+
+    <header class="header">
+        <h1><i class="fas fa-play-circle"></i> Anime Stream Hub</h1>
+        <p>مكتبة الأنمي المجانية – نسخة تجريبية</p>
+    </header>
+
+    <main>
+
+        <!-- Video Player -->
+        <section class="player-section">
+            <h2><i class="fas fa-video"></i> مشغل الفيديو</h2>
+
+            <div class="video-wrapper">
+                <video id="video" preload="metadata" poster="thumbnails/default.jpg">
+                    <source src="videos/sample.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو
+                </video>
             </div>
-        </header>
 
-        <main>
-            <section class="video-player-section">
-                <h2><i class="fas fa-video"></i> مشغل الفيديو التجريبي</h2>
-                <div class="video-container">
-                    <video id="main-video" controls poster="thumbnails/default.jpg">
-                        <source src="videos/sample.mp4" type="video/mp4">
-                        متصفحك لا يدعم تشغيل الفيديو.
-                    </video>
-                    <div class="video-info">
-                        <h3 id="video-title">فيديو تجريبي</h3>
-                        <p id="video-desc">هذا فيديو تجريبي لمكتبة Anime Stream Hub. جاري إضافة المحتوى الكامل قريبًا.</p>
-                    </div>
-                </div>
+            <div class="controls">
+                <button id="playBtn"><i class="fas fa-play"></i></button>
+                <button id="muteBtn"><i class="fas fa-volume-up"></i></button>
+                <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+                <button id="fullscreenBtn"><i class="fas fa-expand"></i></button>
+            </div>
 
-                <div class="video-controls">
-                    <button onclick="playPause()" class="btn-control"><i class="fas fa-play"></i> تشغيل/إيقاف</button>
-                    <button onclick="toggleMute()" class="btn-control"><i class="fas fa-volume-up"></i> كتم/إلغاء</button>
-                    <button onclick="fullScreen()" class="btn-control"><i class="fas fa-expand"></i> ملء الشاشة</button>
-                    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
-                </div>
-            </section>
+            <div class="video-info">
+                <h3>فيديو تجريبي</h3>
+                <p>هذا مثال لمشغل فيديو احترافي سيتم تطويره لاحقًا.</p>
+            </div>
+        </section>
 
-            <section class="library-section">
-                <h2><i class="fas fa-film"></i> المكتبة قيد الإعداد</h2>
-                <div class="checklist">
-                    <p><i class="fas fa-check-circle"></i> تم ربط المشروع بـ GitHub بنجاح</p>
-                    <p><i class="fas fa-check-circle"></i> تم نشر الموقع عبر GitHub Pages</p>
-                    <p><i class="fas fa-check-circle"></i> تم إنشاء هيكل المجلدات (فيديوهات، صور، أكواد)</p>
-                    <p><i class="fas fa-spinner fa-spin"></i> جاري إضافة مكتبة الفيديوهات الكاملة</p>
-                </div>
-            </section>
-        </main>
+        <!-- Library Status -->
+        <section class="library">
+            <h2><i class="fas fa-film"></i> حالة المشروع</h2>
 
-        <footer>
-            <p>تم التطوير باستخدام <strong>Lovable</strong> & <strong>GitHub Pages</strong></p>
-            <p>آخر تحديث: <span id="date"></span> | <span id="video-count">1</span> فيديو متاح</p>
-        </footer>
-    </div>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> المشروع مربوط بـ GitHub</li>
+                <li><i class="fas fa-check-circle"></i> الموقع منشور عبر GitHub Pages</li>
+                <li><i class="fas fa-check-circle"></i> هيكل الملفات جاهز</li>
+                <li><i class="fas fa-spinner fa-spin"></i> إضافة مكتبة الفيديوهات</li>
+            </ul>
+        </section>
 
-    <script src="js/player.js"></script>
-    <script>
-        document.getElementById('date').textContent = new Date().toLocaleDateString('ar-SA', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-    </script>
+    </main>
+
+    <footer class="footer">
+        <p>تم التطوير باستخدام Lovable & GitHub Pages</p>
+        <p>آخر تحديث: <span id="date"></span></p>
+    </footer>
+
+</div>
+
+<script src="js/player.js"></script>
 </body>
 </html>
