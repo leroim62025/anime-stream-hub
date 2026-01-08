@@ -1,71 +1,44 @@
-// مشغل الفيديو - تحكم كامل
-const video = document.getElementById('main-video');
+const video = document.getElementById("video");
+const playBtn = document.getElementById("playBtn");
+const muteBtn = document.getElementById("muteBtn");
+const volumeSlider = document.getElementById("volume");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+const dateSpan = document.getElementById("date");
 
-// تشغيل/إيقاف
-function playPause() {
+/* Play / Pause */
+playBtn.addEventListener("click", () => {
     if (video.paused) {
         video.play();
-        document.querySelector('.btn-control i.fa-play').className = 'fas fa-pause';
+        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     } else {
         video.pause();
-        document.querySelector('.btn-control i.fa-pause').className = 'fas fa-play';
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
     }
-}
+});
 
-// كتم/إلغاء الكتم
-function toggleMute() {
+/* Mute */
+muteBtn.addEventListener("click", () => {
     video.muted = !video.muted;
-    const icon = document.querySelector('.btn-control i.fa-volume-up');
-    if (video.muted) {
-        icon.className = 'fas fa-volume-mute';
-    } else {
-        icon.className = 'fas fa-volume-up';
-    }
-}
+    muteBtn.innerHTML = video.muted
+        ? '<i class="fas fa-volume-mute"></i>'
+        : '<i class="fas fa-volume-up"></i>';
+});
 
-// ملء الشاشة
-function fullScreen() {
+/* Volume */
+volumeSlider.addEventListener("input", () => {
+    video.volume = volumeSlider.value;
+});
+
+/* Fullscreen */
+fullscreenBtn.addEventListener("click", () => {
     if (video.requestFullscreen) {
         video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
-    }
-}
-
-// تحكم في مستوى الصوت
-const volumeSlider = document.getElementById('volume-slider');
-if (volumeSlider) {
-    volumeSlider.addEventListener('input', function() {
-        video.volume = this.value;
-        if (this.value == 0) {
-            document.querySelector('.btn-control i.fa-volume-up').className = 'fas fa-volume-mute';
-        } else {
-            document.querySelector('.btn-control i.fa-volume-up').className = 'fas fa-volume-up';
-        }
-    });
-}
-
-// تحديث زر التشغيل تلقائيًا
-video.addEventListener('play', function() {
-    document.querySelector('.btn-control i.fa-play').className = 'fas fa-pause';
-});
-
-video.addEventListener('pause', function() {
-    document.querySelector('.btn-control i.fa-play').className = 'fas fa-play';
-});
-
-// رسالة تأكيد عند مغادرة الصفحة أثناء التشغيل
-window.addEventListener('beforeunload', function(e) {
-    if (!video.paused) {
-        e.preventDefault();
-        e.returnValue = 'الفيديو لا يزال يعمل. هل تريد المغادرة؟';
     }
 });
 
-// تحميل الفيديو التلقائي عند فتح الصفحة (اختياري)
-window.onload = function() {
-    console.log('مشغل الفيديو جاهز!');
-    // video.play(); // يمكن تفعيله إذا أردت التشغيل التلقائي
-};
+/* Date */
+dateSpan.textContent = new Date().toLocaleDateString("ar-SA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+});
