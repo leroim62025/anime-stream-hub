@@ -6,96 +6,65 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Stream Hub - مكتبة الأنمي</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin: 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        h1 {
-            color: #00dbde;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: #a0a0ff;
-            margin-bottom: 30px;
-        }
-        .coming-soon {
-            font-size: 1.5rem;
-            background: rgba(0, 219, 222, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            display: inline-block;
-            margin: 20px 0;
-            border: 2px dashed #00dbde;
-        }
-        .logo {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-        .checklist {
-            text-align: right;
-            margin: 30px auto;
-            max-width: 500px;
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .checklist p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-        .checklist p:before {
-            content: "✅ ";
-            margin-left: 10px;
-        }
-        .footer {
-            margin-top: 40px;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="logo">🎬</div>
-        <h1>Anime Stream Hub</h1>
-        <p class="subtitle">مكتبة فيديوهات الأنمي المجانية - قيد التطوير</p>
-        
-        <div class="coming-soon">
-            🚧 الموقع قيد الإنشاء 🚧<br>
-            سنطلق قريبًا!
-        </div>
+        <header>
+            <div class="logo-section">
+                <h1><i class="fas fa-play-circle"></i> Anime Stream Hub</h1>
+                <p class="subtitle">مكتبة فيديوهات الأنمي المجانية - قيد التطوير</p>
+            </div>
+        </header>
 
-        <div class="checklist">
-            <p>تم ربط المشروع بـ GitHub بنجاح</p>
-            <p>تم نشر الموقع عبر GitHub Pages</p>
-            <p>جاري إعداد مكتبة الفيديوهات وتصميم المشغل</p>
-        </div>
-        
-        <div class="footer">
-            تم التطوير باستخدام Lovable & GitHub Pages<br>
-            آخر تحديث: <span id="date"></span>
-        </div>
+        <main>
+            <section class="video-player-section">
+                <h2><i class="fas fa-video"></i> مشغل الفيديو التجريبي</h2>
+                <div class="video-container">
+                    <video id="main-video" controls poster="thumbnails/default.jpg">
+                        <source src="videos/sample.mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+                    <div class="video-info">
+                        <h3 id="video-title">فيديو تجريبي</h3>
+                        <p id="video-desc">هذا فيديو تجريبي لمكتبة Anime Stream Hub. جاري إضافة المحتوى الكامل قريبًا.</p>
+                    </div>
+                </div>
+
+                <div class="video-controls">
+                    <button onclick="playPause()" class="btn-control"><i class="fas fa-play"></i> تشغيل/إيقاف</button>
+                    <button onclick="toggleMute()" class="btn-control"><i class="fas fa-volume-up"></i> كتم/إلغاء</button>
+                    <button onclick="fullScreen()" class="btn-control"><i class="fas fa-expand"></i> ملء الشاشة</button>
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+                </div>
+            </section>
+
+            <section class="library-section">
+                <h2><i class="fas fa-film"></i> المكتبة قيد الإعداد</h2>
+                <div class="checklist">
+                    <p><i class="fas fa-check-circle"></i> تم ربط المشروع بـ GitHub بنجاح</p>
+                    <p><i class="fas fa-check-circle"></i> تم نشر الموقع عبر GitHub Pages</p>
+                    <p><i class="fas fa-check-circle"></i> تم إنشاء هيكل المجلدات (فيديوهات، صور، أكواد)</p>
+                    <p><i class="fas fa-spinner fa-spin"></i> جاري إضافة مكتبة الفيديوهات الكاملة</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>تم التطوير باستخدام <strong>Lovable</strong> & <strong>GitHub Pages</strong></p>
+            <p>آخر تحديث: <span id="date"></span> | <span id="video-count">1</span> فيديو متاح</p>
+        </footer>
     </div>
 
+    <script src="js/player.js"></script>
     <script>
-        document.getElementById('date').textContent = new Date().toLocaleDateString('ar-SA');
+        document.getElementById('date').textContent = new Date().toLocaleDateString('ar-SA', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     </script>
 </body>
 </html>
