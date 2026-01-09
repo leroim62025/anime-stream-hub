@@ -1,3 +1,4 @@
+const progress = document.getElementById("progress");
 const video = document.getElementById("video");
 const playBtn = document.getElementById("playBtn");
 const muteBtn = document.getElementById("muteBtn");
@@ -41,4 +42,16 @@ dateSpan.textContent = new Date().toLocaleDateString("ar-SA", {
     year: "numeric",
     month: "long",
     day: "numeric"
+});
+/* Progress Bar */
+video.addEventListener("loadedmetadata", () => {
+    progress.max = Math.floor(video.duration);
+});
+
+video.addEventListener("timeupdate", () => {
+    progress.value = Math.floor(video.currentTime);
+});
+
+progress.addEventListener("input", () => {
+    video.currentTime = progress.value;
 });
