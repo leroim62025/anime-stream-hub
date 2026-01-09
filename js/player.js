@@ -1,5 +1,5 @@
-const progress = document.getElementById("progress");
 const video = document.getElementById("video");
+const progress = document.getElementById("progress");
 const playBtn = document.getElementById("playBtn");
 const muteBtn = document.getElementById("muteBtn");
 const volumeSlider = document.getElementById("volume");
@@ -37,21 +37,22 @@ fullscreenBtn.addEventListener("click", () => {
     }
 });
 
+/* Progress */
+video.addEventListener("loadedmetadata", () => {
+    progress.max = video.duration;
+});
+
+video.addEventListener("timeupdate", () => {
+    progress.value = video.currentTime;
+});
+
+progress.addEventListener("input", () => {
+    video.currentTime = progress.value;
+});
+
 /* Date */
 dateSpan.textContent = new Date().toLocaleDateString("ar-SA", {
     year: "numeric",
     month: "long",
     day: "numeric"
-});
-/* Progress Bar */
-video.addEventListener("loadedmetadata", () => {
-    progress.max = Math.floor(video.duration);
-});
-
-video.addEventListener("timeupdate", () => {
-    progress.value = Math.floor(video.currentTime);
-});
-
-progress.addEventListener("input", () => {
-    video.currentTime = progress.value;
 });
